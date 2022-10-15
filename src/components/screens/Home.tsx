@@ -1,6 +1,9 @@
 import type { NextPage } from "next";
+import { useRouter } from "next/router";
 
 const HomeScreen: NextPage = () => {
+  const router = useRouter();
+
   return (
     <>
       <main className="container mx-auto flex min-h-screen flex-col items-center justify-center gap-y-11 p-4">
@@ -16,7 +19,12 @@ const HomeScreen: NextPage = () => {
           reprehenderit quisquam, quas doloremque quod in, accusantium magni
           natus eius magnam.
         </p>
-        <button className="flex items-center gap-x-2 rounded-full border-4 border-[#7B7B8F] px-5 py-3 text-xl tracking-wide duration-300 hover:border-neutral-50 md:text-2xl">
+        <button
+          className="flex items-center gap-x-2 rounded-full border-4 border-[#7B7B8F] px-5 py-3 text-xl tracking-wide duration-300 hover:border-neutral-50 md:text-2xl"
+          onClick={() => {
+            router.push("/login");
+          }}
+        >
           Comece Agora{" "}
           <svg
             xmlns="http://www.w3.org/2000/svg"
