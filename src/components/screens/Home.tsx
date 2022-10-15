@@ -6,21 +6,21 @@ const HomeScreen: NextPage = () => {
 
   return (
     <>
-      <main className="container mx-auto flex min-h-screen flex-col items-center justify-center gap-y-11 p-4">
+      <main className="mx-auto flex min-h-screen flex-col items-center justify-center gap-y-11 bg-neutral-500 bg-barbell2 bg-cover bg-center bg-no-repeat p-4 bg-blend-multiply">
         <h3 className="text-lg font-bold uppercase tracking-widest">
-          Bem vindo
+          Bem vindo ao
         </h3>
-        <h1 className=" text-5xl font-extrabold text-[#7B7B8F] sm:text-6xl sm:tracking-wider md:text-8xl">
+        <h1 className="text-outline text-5xl font-extrabold sm:text-6xl sm:tracking-wider md:text-8xl">
           Gym Tracker
         </h1>
-        <p className="w-full max-w-2xl text-center text-lg font-normal leading-8 tracking-wide text-[#7B7B8F] md:text-2xl">
+        <p className="w-full max-w-2xl text-center text-xl leading-8 tracking-wide md:text-2xl">
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit
           maxime quidem at, a earum molestias alias cupiditate? Ab deleniti
           reprehenderit quisquam, quas doloremque quod in, accusantium magni
           natus eius magnam.
         </p>
         <button
-          className="flex items-center gap-x-2 rounded-full border-4 border-[#7B7B8F] px-5 py-3 text-xl tracking-wide duration-300 hover:border-neutral-50 md:text-2xl"
+          className="flex items-center gap-x-2 rounded-full border-4 border-neutral-500 px-5 py-3 text-xl tracking-wide duration-300 hover:border-neutral-50 md:text-2xl"
           onClick={() => {
             router.push("/login");
           }}
