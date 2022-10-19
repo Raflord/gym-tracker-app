@@ -54,6 +54,7 @@ const Login: NextPage = () => {
 
 export default Login;
 
+// get session from server redirect the user
 export const getServerSideProps: GetServerSideProps = async (
   ctx: GetServerSidePropsContext
 ) => {

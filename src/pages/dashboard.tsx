@@ -5,12 +5,11 @@ import type {
 } from "next";
 import { signOut, useSession } from "next-auth/react";
 import Head from "next/head";
-import { useRouter } from "next/router";
+import PopoverComponent from "../components/Popover";
 import { getServerAuthSession } from "../server/common/get-server-auth-session";
 
 const Dashboard: NextPage = () => {
-  const route = useRouter();
-  const session = useSession();
+  const { data: session } = useSession();
 
   return (
     <>
@@ -19,18 +18,18 @@ const Dashboard: NextPage = () => {
         <meta name="description" content="Track your progress in the gym" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="mx-auto flex flex-col items-center justify-center p-4">
-        <div>Hello! {session?.data?.user?.name}</div>
-        <div>you are logged in</div>
-        <button
-          className="bg-blue-500"
-          onClick={() => {
-            signOut();
-            route.push("/");
-          }}
-        >
-          logout
-        </button>
+      <main className="mx-auto max-w-4xl p-4">
+        <div className="flex items-center py-2">
+          <PopoverComponent
+            avatarUrl={session?.user?.image}
+            signOutFn={signOut}
+          />
+          <div className="text-lg">Bem vindo! {session?.user?.name}</div>
+        </div>
+        <div>
+          <label htmlFor="weight">Weight</label>
+          <input type="number" name="weight" id="weight" placeholder="kg" />
+        </div>
       </main>
     </>
   );
@@ -38,6 +37,7 @@ const Dashboard: NextPage = () => {
 
 export default Dashboard;
 
+// get session from server redirect the user
 export const getServerSideProps: GetServerSideProps = async (
   ctx: GetServerSidePropsContext
 ) => {

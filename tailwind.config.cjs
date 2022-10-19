@@ -4,11 +4,11 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        dumbell: "url('../assets/dumbell.jpg')",
-        barbell: "url('../assets/barbell.jpg')",
-        barbell2: "url('../assets/barbell_2.jpg')",
+        dumbell: "url('../assets/images/dumbell.jpg')",
+        barbell: "url('../assets/images/barbell.jpg')",
+        barbell2: "url('../assets/images/barbell_2.jpg')",
       },
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/forms")],
 };
