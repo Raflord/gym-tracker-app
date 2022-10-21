@@ -26,7 +26,7 @@ const Home: NextPage = () => {
           natus eius magnam.
         </p>
         <button
-          className="flex items-center gap-x-2 rounded-full border-4 border-neutral-500 px-5 py-3 text-xl tracking-wide duration-300 hover:border-neutral-50 md:text-2xl"
+          className="flex items-center gap-x-2 rounded-full bg-white px-6 py-4 text-xl font-bold uppercase tracking-widest text-neutral-900 duration-300 hover:shadow-lg hover:shadow-[#cdcdcd]"
           onClick={() => {
             router.push("/login");
           }}

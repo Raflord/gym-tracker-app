@@ -8,6 +8,9 @@ module.exports = {
         barbell: "url('../assets/images/barbell.jpg')",
         barbell2: "url('../assets/images/barbell_2.jpg')",
       },
+      fontFamily: {
+        Poppins: ["Poppins", "sans-serif"],
+      },
     },
   },
   plugins: [require("@tailwindcss/forms")],

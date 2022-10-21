@@ -5,7 +5,7 @@ import type {
 } from "next";
 import { signOut, useSession } from "next-auth/react";
 import Head from "next/head";
-import PopoverComponent from "../components/Popover";
+import Navbar from "../components/Navbar";
 import { getServerAuthSession } from "../server/common/get-server-auth-session";
 
 const Dashboard: NextPage = () => {
@@ -18,18 +18,8 @@ const Dashboard: NextPage = () => {
         <meta name="description" content="Track your progress in the gym" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="mx-auto max-w-4xl p-4">
-        <div className="flex items-center py-2">
-          <PopoverComponent
-            avatarUrl={session?.user?.image}
-            signOutFn={signOut}
-          />
-          <div className="text-lg">Bem vindo! {session?.user?.name}</div>
-        </div>
-        <div>
-          <label htmlFor="weight">Weight</label>
-          <input type="number" name="weight" id="weight" placeholder="kg" />
-        </div>
+      <main className="mx-auto max-w-xl p-4">
+        <Navbar avatarUrl={session?.user?.image} signOutFn={signOut} />
       </main>
     </>
   );
@@ -37,7 +27,7 @@ const Dashboard: NextPage = () => {
 
 export default Dashboard;
 
-// get session from server redirect the user
+// get session from server and redirect the user
 export const getServerSideProps: GetServerSideProps = async (
   ctx: GetServerSidePropsContext
 ) => {

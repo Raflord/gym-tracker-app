@@ -1,7 +1,32 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  [type="text"],
+  [type="email"],
+  [type="url"],
+  [type="password"],
+  [type="number"],
+  [type="date"],
+  [type="datetime-local"],
+  [type="month"],
+  [type="search"],
+  [type="tel"],
+  [type="time"],
+  [type="week"],
+  [multiple],
+  textarea,
+  select {
+    @apply rounded-lg bg-transparent focus:border-neutral-400 focus:ring-neutral-400;
+  }
+  html {
+    @apply font-Poppins;
+  }
+}
+
 body {
-  @apply bg-neutral-900 text-neutral-50;
+  @apply bg-neutral-900 text-white;
 }

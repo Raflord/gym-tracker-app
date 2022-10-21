@@ -1,7 +1,5 @@
 import { Popover, Transition } from "@headlessui/react";
-import Image from "next/image";
 import { Fragment } from "react";
-import AvatarPlaceholder from "../assets/images/avatar-placeholder.png";
 
 interface IProps {
   avatarUrl: string | null | undefined;
@@ -10,40 +8,45 @@ interface IProps {
 
 const solutions = [
   {
-    name: "Insights",
-    description: "Measure actions your users take",
+    name: "Perfil",
+    description: "Editar informações do perfil",
     href: "##",
     icon: IconOne,
   },
   {
-    name: "Automations",
-    description: "Create your own targeted content",
+    name: "Histórico",
+    description: "Histórico completo de registros",
     href: "##",
     icon: IconTwo,
   },
   {
-    name: "Reports",
-    description: "Keep track of your growth",
+    name: "Precisa de ajuda?",
+    description: "Obtenha ajuda de uso do app",
     href: "##",
     icon: IconThree,
   },
 ];
 
-export default function PopoverComponent({ avatarUrl, signOutFn }: IProps) {
+export default function PopoverComponent({ signOutFn }: IProps) {
   return (
     <div>
-      <Popover>
+      <Popover className="relative">
         {() => (
           <>
             <Popover.Button className="group mr-3 flex items-center justify-center rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
               <div className="flex">
-                <Image
-                  src={avatarUrl || AvatarPlaceholder}
-                  alt="Profile picture"
-                  width={65}
-                  height={65}
-                  className="rounded-full"
-                />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className="h-6 w-6"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm0 5.25a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z"
+                    clipRule="evenodd"
+                  />
+                </svg>
               </div>
             </Popover.Button>
             <Transition
@@ -55,37 +58,37 @@ export default function PopoverComponent({ avatarUrl, signOutFn }: IProps) {
               leaveFrom="opacity-100 translate-y-0"
               leaveTo="opacity-0 translate-y-1"
             >
-              <Popover.Panel className="absolute z-10 mt-2 max-w-sm pr-4">
+              <Popover.Panel className="absolute right-0 z-10 mt-2 w-screen max-w-sm origin-top-right pl-8">
                 <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
-                  <div className="relative grid gap-8 bg-white p-7">
+                  <div className="relative grid gap-8 bg-[#2b2b2b] p-7">
                     {solutions.map((item) => (
                       <a
                         key={item.name}
                         href={item.href}
-                        className="-m-3 flex items-center rounded-lg p-2 transition duration-150 ease-in-out hover:bg-gray-50 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50"
+                        className="-m-3 flex items-center rounded-lg p-2 transition duration-150 ease-in-out hover:bg-[#5f5f5f] focus:outline-none focus-visible:ring focus-visible:ring-white focus-visible:ring-opacity-50"
                       >
                         <div className="flex h-10 w-10 shrink-0 items-center justify-center text-white sm:h-12 sm:w-12">
                           <item.icon aria-hidden="true" />
                         </div>
                         <div className="ml-4">
-                          <p className="text-sm font-medium text-gray-900">
+                          <p className="text-sm font-medium text-white">
                             {item.name}
                           </p>
-                          <p className="text-sm text-gray-500">
+                          <p className="text-sm text-gray-400">
                             {item.description}
                           </p>
                         </div>
                       </a>
                     ))}
                   </div>
-                  <div className="bg-gray-50 p-4">
+                  <div className="bg-[#2b2b2b] p-4">
                     <button
-                      className="flow-root rounded-md px-2 py-2 transition duration-150 ease-in-out hover:bg-red-200 focus:outline-none focus-visible:ring focus-visible:ring-red-500 focus-visible:ring-opacity-50"
+                      className="flow-root rounded-lg bg-[#dd5e5e] px-2 py-2 transition duration-150 ease-in-out focus:outline-none focus-visible:ring focus-visible:ring-[#dd5e5e] focus-visible:ring-opacity-50"
                       onClick={signOutFn}
                     >
                       <span className="flex items-center">
-                        <span className="text-sm font-medium text-gray-900">
-                          Sign out
+                        <span className="text-sm font-medium text-white">
+                          Logout
                         </span>
                       </span>
                     </button>
@@ -103,31 +106,15 @@ export default function PopoverComponent({ avatarUrl, signOutFn }: IProps) {
 function IconOne() {
   return (
     <svg
-      width="48"
-      height="48"
-      viewBox="0 0 48 48"
-      fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className="h-12 w-12"
     >
-      <rect width="48" height="48" rx="8" fill="#FFEDD5" />
       <path
-        d="M24 11L35.2583 17.5V30.5L24 37L12.7417 30.5V17.5L24 11Z"
-        stroke="#FB923C"
-        strokeWidth="2"
-      />
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M16.7417 19.8094V28.1906L24 32.3812L31.2584 28.1906V19.8094L24 15.6188L16.7417 19.8094Z"
-        stroke="#FDBA74"
-        strokeWidth="2"
-      />
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M20.7417 22.1196V25.882L24 27.7632L27.2584 25.882V22.1196L24 20.2384L20.7417 22.1196Z"
-        stroke="#FDBA74"
-        strokeWidth="2"
+        fill-rule="evenodd"
+        d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z"
+        clip-rule="evenodd"
       />
     </svg>
   );
@@ -136,25 +123,12 @@ function IconOne() {
 function IconTwo() {
   return (
     <svg
-      width="48"
-      height="48"
-      viewBox="0 0 48 48"
-      fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className="h-12 w-12"
     >
-      <rect width="48" height="48" rx="8" fill="#FFEDD5" />
-      <path
-        d="M28.0413 20L23.9998 13L19.9585 20M32.0828 27.0001L36.1242 34H28.0415M19.9585 34H11.8755L15.9171 27"
-        stroke="#FB923C"
-        strokeWidth="2"
-      />
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M18.804 30H29.1963L24.0001 21L18.804 30Z"
-        stroke="#FDBA74"
-        strokeWidth="2"
-      />
+      <path d="M18.375 2.25c-1.035 0-1.875.84-1.875 1.875v15.75c0 1.035.84 1.875 1.875 1.875h.75c1.035 0 1.875-.84 1.875-1.875V4.125c0-1.036-.84-1.875-1.875-1.875h-.75zM9.75 8.625c0-1.036.84-1.875 1.875-1.875h.75c1.036 0 1.875.84 1.875 1.875v11.25c0 1.035-.84 1.875-1.875 1.875h-.75a1.875 1.875 0 01-1.875-1.875V8.625zM3 13.125c0-1.036.84-1.875 1.875-1.875h.75c1.036 0 1.875.84 1.875 1.875v6.75c0 1.035-.84 1.875-1.875 1.875h-.75A1.875 1.875 0 013 19.875v-6.75z" />
     </svg>
   );
 }
@@ -162,19 +136,16 @@ function IconTwo() {
 function IconThree() {
   return (
     <svg
-      width="48"
-      height="48"
-      viewBox="0 0 48 48"
-      fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className="h-12 w-12"
     >
-      <rect width="48" height="48" rx="8" fill="#FFEDD5" />
-      <rect x="13" y="32" width="2" height="4" fill="#FDBA74" />
-      <rect x="17" y="28" width="2" height="8" fill="#FDBA74" />
-      <rect x="21" y="24" width="2" height="12" fill="#FDBA74" />
-      <rect x="25" y="20" width="2" height="16" fill="#FDBA74" />
-      <rect x="29" y="16" width="2" height="20" fill="#FB923C" />
-      <rect x="33" y="12" width="2" height="24" fill="#FB923C" />
+      <path
+        fill-rule="evenodd"
+        d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm11.378-3.917c-.89-.777-2.366-.777-3.255 0a.75.75 0 01-.988-1.129c1.454-1.272 3.776-1.272 5.23 0 1.513 1.324 1.513 3.518 0 4.842a3.75 3.75 0 01-.837.552c-.676.328-1.028.774-1.028 1.152v.75a.75.75 0 01-1.5 0v-.75c0-1.279 1.06-2.107 1.875-2.502.182-.088.351-.199.503-.331.83-.727.83-1.857 0-2.584zM12 18a.75.75 0 100-1.5.75.75 0 000 1.5z"
+        clip-rule="evenodd"
+      />
     </svg>
   );
 }
