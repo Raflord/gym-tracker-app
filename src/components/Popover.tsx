@@ -27,7 +27,7 @@ const solutions = [
   },
 ];
 
-export default function PopoverComponent({ signOutFn }: IProps) {
+const PopoverComponent = ({ signOutFn }: IProps) => {
   return (
     <div>
       <Popover className="relative">
@@ -58,7 +58,7 @@ export default function PopoverComponent({ signOutFn }: IProps) {
               leaveFrom="opacity-100 translate-y-0"
               leaveTo="opacity-0 translate-y-1"
             >
-              <Popover.Panel className="absolute right-0 z-10 mt-2 w-screen max-w-sm origin-top-right pl-8">
+              <Popover.Panel className="absolute right-0 z-10 mt-6 w-screen max-w-sm origin-top-right pl-8">
                 <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
                   <div className="relative grid gap-8 bg-[#2b2b2b] p-7">
                     {solutions.map((item) => (
@@ -101,7 +101,7 @@ export default function PopoverComponent({ signOutFn }: IProps) {
       </Popover>
     </div>
   );
-}
+};
 
 function IconOne() {
   return (
@@ -112,7 +112,7 @@ function IconOne() {
       className="h-12 w-12"
     >
       <path
-        fill-rule="evenodd"
+        fillRule="evenodd"
         d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z"
         clip-rule="evenodd"
       />
@@ -142,10 +142,12 @@ function IconThree() {
       className="h-12 w-12"
     >
       <path
-        fill-rule="evenodd"
+        fillRule="evenodd"
         d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm11.378-3.917c-.89-.777-2.366-.777-3.255 0a.75.75 0 01-.988-1.129c1.454-1.272 3.776-1.272 5.23 0 1.513 1.324 1.513 3.518 0 4.842a3.75 3.75 0 01-.837.552c-.676.328-1.028.774-1.028 1.152v.75a.75.75 0 01-1.5 0v-.75c0-1.279 1.06-2.107 1.875-2.502.182-.088.351-.199.503-.331.83-.727.83-1.857 0-2.584zM12 18a.75.75 0 100-1.5.75.75 0 000 1.5z"
         clip-rule="evenodd"
       />
     </svg>
   );
 }
+
+export default PopoverComponent;

@@ -1,10 +1,8 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { useRouter } from "next/router";
+import Link from "next/link";
 
 const Home: NextPage = () => {
-  const router = useRouter();
-
   return (
     <>
       <Head>
@@ -25,26 +23,23 @@ const Home: NextPage = () => {
           reprehenderit quisquam, quas doloremque quod in, accusantium magni
           natus eius magnam.
         </p>
-        <button
-          className="flex items-center gap-x-2 rounded-full bg-white px-6 py-4 text-xl font-bold uppercase tracking-widest text-neutral-900 duration-300 hover:shadow-lg hover:shadow-[#cdcdcd]"
-          onClick={() => {
-            router.push("/login");
-          }}
-        >
-          Comece Agora{" "}
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            className="mt-1 h-5 w-5"
-          >
-            <path
-              fillRule="evenodd"
-              d="M12.97 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06l6.22-6.22H3a.75.75 0 010-1.5h16.19l-6.22-6.22a.75.75 0 010-1.06z"
-              clipRule="evenodd"
-            />
-          </svg>
-        </button>
+        <Link href="/login">
+          <button className="flex items-center gap-x-2 rounded-full bg-white px-6 py-4 text-xl font-bold uppercase tracking-widest text-neutral-900 duration-300 hover:shadow-lg hover:shadow-[#cdcdcd]">
+            Comece Agora{" "}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              className="mt-1 h-5 w-5"
+            >
+              <path
+                fillRule="evenodd"
+                d="M12.97 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06l6.22-6.22H3a.75.75 0 010-1.5h16.19l-6.22-6.22a.75.75 0 010-1.06z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </button>
+        </Link>
       </main>
     </>
   );
