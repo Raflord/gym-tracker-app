@@ -1,4 +1,5 @@
 import { Popover, Transition } from "@headlessui/react";
+import { useRouter } from "next/router";
 import { Fragment } from "react";
 
 interface IProps {
@@ -10,24 +11,32 @@ const solutions = [
   {
     name: "Perfil",
     description: "Editar informações do perfil",
-    href: "##",
+    href: "/profile",
     icon: IconOne,
+  },
+  {
+    name: "Dashoard",
+    description: "Resumo do pregresso",
+    href: "/dashboard",
+    icon: IconFour,
   },
   {
     name: "Histórico",
     description: "Histórico completo de registros",
-    href: "##",
+    href: "/historico",
     icon: IconTwo,
   },
   {
     name: "Precisa de ajuda?",
     description: "Obtenha ajuda de uso do app",
-    href: "##",
+    href: "/help",
     icon: IconThree,
   },
 ];
 
-const PopoverComponent = ({ signOutFn }: IProps) => {
+export default function PopoverComponent({ signOutFn }: IProps) {
+  const router = useRouter();
+
   return (
     <div>
       <Popover className="relative">
@@ -64,8 +73,10 @@ const PopoverComponent = ({ signOutFn }: IProps) => {
                     {solutions.map((item) => (
                       <a
                         key={item.name}
-                        href={item.href}
-                        className="-m-3 flex items-center rounded-lg p-2 transition duration-150 ease-in-out hover:bg-[#5f5f5f] focus:outline-none focus-visible:ring focus-visible:ring-white focus-visible:ring-opacity-50"
+                        className="-m-3 flex cursor-pointer items-center rounded-lg p-2 transition duration-150 ease-in-out hover:bg-[#5f5f5f] focus:outline-none focus-visible:ring focus-visible:ring-white focus-visible:ring-opacity-50"
+                        onClick={() => {
+                          router.push(item.href);
+                        }}
                       >
                         <div className="flex h-10 w-10 shrink-0 items-center justify-center text-white sm:h-12 sm:w-12">
                           <item.icon aria-hidden="true" />
@@ -101,7 +112,7 @@ const PopoverComponent = ({ signOutFn }: IProps) => {
       </Popover>
     </div>
   );
-};
+}
 
 function IconOne() {
   return (
@@ -114,7 +125,7 @@ function IconOne() {
       <path
         fillRule="evenodd"
         d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z"
-        clip-rule="evenodd"
+        clipRule="evenodd"
       />
     </svg>
   );
@@ -144,10 +155,30 @@ function IconThree() {
       <path
         fillRule="evenodd"
         d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm11.378-3.917c-.89-.777-2.366-.777-3.255 0a.75.75 0 01-.988-1.129c1.454-1.272 3.776-1.272 5.23 0 1.513 1.324 1.513 3.518 0 4.842a3.75 3.75 0 01-.837.552c-.676.328-1.028.774-1.028 1.152v.75a.75.75 0 01-1.5 0v-.75c0-1.279 1.06-2.107 1.875-2.502.182-.088.351-.199.503-.331.83-.727.83-1.857 0-2.584zM12 18a.75.75 0 100-1.5.75.75 0 000 1.5z"
-        clip-rule="evenodd"
+        clipRule="evenodd"
       />
     </svg>
   );
 }
 
-export default PopoverComponent;
+function IconFour() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className="h-12 w-12"
+    >
+      <path
+        fillRule="evenodd"
+        d="M2.25 13.5a8.25 8.25 0 018.25-8.25.75.75 0 01.75.75v6.75H18a.75.75 0 01.75.75 8.25 8.25 0 01-16.5 0z"
+        clipRule="evenodd"
+      />
+      <path
+        fillRule="evenodd"
+        d="M12.75 3a.75.75 0 01.75-.75 8.25 8.25 0 018.25 8.25.75.75 0 01-.75.75h-7.5a.75.75 0 01-.75-.75V3z"
+        clipRule="evenodd"
+      />
+    </svg>
+  );
+}

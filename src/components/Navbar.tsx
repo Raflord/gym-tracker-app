@@ -1,6 +1,6 @@
 import Image from "next/image";
 import AvatarPlaceholder from "../assets/images/avatar-placeholder.png";
-import PopoverComponent from "./Popover";
+import Popover from "./Popover";
 
 interface IProps {
   avatarUrl: string | null | undefined;
@@ -20,7 +20,7 @@ const Navbar = ({ avatarUrl, signOutFn }: IProps) => {
         />
       </div>
       <div className="text-lg font-bold">Gym Tracker</div>
-      <PopoverComponent avatarUrl={null} signOutFn={signOutFn} />
+      <Popover avatarUrl={null} signOutFn={signOutFn} />
     </div>
   );
 };
